@@ -2,16 +2,18 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>pk.com.mypetworld.server</groupId>
-  <artifactId>jjs</artifactId>
+  <artifactId>mpw</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
   <name>My Pet World Server Application</name>
   <url>http://maven.apache.org</url>
    <properties>
       <jersey.version>2.6</jersey.version>
-      <org.springframework.version>3.1.0.RELEASE</org.springframework.version>
+      <org.springframework.version>3.2.8.RELEASE</org.springframework.version>
       <testng.version>5.12.1</testng.version> 
       <springsec.version>3.1.0.RELEASE</springsec.version>
+      <maven.test.failure.ignore>true</maven.test.failure.ignore>
+      
   </properties>
   
 	<repositories>
@@ -25,9 +27,15 @@
 		    <name>Repository hosting the jee6 artifacts</name>
 		    <url>http://download.java.net/maven/2</url>
  	 	</repository>
-	</repositories>
-	  
+	
+	
 
+		<repository>
+		  <id>spring-milestone</id>
+		  <name>Spring Maven MILESTONE Repository</name>
+		  <url>http://repo.spring.io/libs-milestone</url>
+		</repository>
+	</repositories>
             
 	<dependencies>
 	  
@@ -64,14 +72,14 @@
  		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-asm</artifactId>
-			<version>${org.springframework.version}</version>
+			<version>3.1.0.RELEASE</version>
 		</dependency>
 		
 		
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>4.7</version>
       <scope>test</scope>
     </dependency>
  	<!-- Jersey dependency -->
@@ -121,6 +129,17 @@
             <version>${jersey.version}</version>
             <scope>test</scope>
         </dependency>
+        
+        
+		
+		<!-- SPRING MONGO DB DEPENDENCY -->
+		 <dependency>
+		   <groupId>org.springframework.data</groupId>
+		   <artifactId>spring-data-mongodb</artifactId>
+		   <version>1.3.4.RELEASE</version>
+		 </dependency>
+        
+        <!-- SPRING SECURITY FRAMEWORK DEPENDENCIES -->
         <dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
@@ -140,8 +159,10 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-aspects</artifactId>
 			<version>${springsec.version}</version>
-	
 		</dependency>
+		
+		
+		<!-- SPRING TESTING DEPENDENCIES -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -149,6 +170,13 @@
             <scope>test</scope>
         </dependency>
 
+		
+        <!-- LOG4J DEPENDENCY -->
+        <dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.14</version>
+		</dependency>
 		
 	
    </dependencies>
@@ -171,7 +199,28 @@
 			  <version>9.1.2.v20140210</version>
 			  
 			</plugin>
-			
+
+			<plugin>
+			  <groupId>org.codehaus.mojo</groupId>
+			  <artifactId>exec-maven-plugin</artifactId>
+			  <version>1.2.1</version>
+			  <executions>
+			    <execution>
+			      <goals>
+			        <goal>java</goal>
+			      </goals> 
+			    </execution>
+			  </executions>
+			  <configuration>
+			    <mainClass>pk.com.mypetworld.server.test.MongoAppA</mainClass>
+			    <classpathScope>test</classpathScope>			    
+<!-- 			<arguments>
+			      <argument>foo</argument>
+			      <argument>bar</argument>
+			    </arguments> 
+-->
+			  </configuration>
+		</plugin>	
         </plugins>   
          
   </build>

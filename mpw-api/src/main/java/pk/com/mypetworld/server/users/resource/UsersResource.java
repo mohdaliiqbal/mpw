@@ -1,7 +1,7 @@
 /**
  * 
  */
-package pk.com.mypetworld.server.users.rest.resource;
+package pk.com.mypetworld.server.users.resource;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

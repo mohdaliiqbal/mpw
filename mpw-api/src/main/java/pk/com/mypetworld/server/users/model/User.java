@@ -15,6 +15,21 @@ public class User implements IUser {
 	String password;
 	Date registrationDate;
 	UserAccountState accountState;
+	
+	
+	
+	
+	public User(String userId, String emailAddress)
+	{
+		this.setUserId(userId);
+		
+		this.setEmailAddress(emailAddress);
+		
+	}
+	
+	
+	
+	
 	/* (non-Javadoc)
 	 * @see pk.com.mypetworld.server.users.model.IUser#getUserId()
 	 */
@@ -43,20 +58,7 @@ public class User implements IUser {
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
 	}
-	/* (non-Javadoc)
-	 * @see pk.com.mypetworld.server.users.model.IUser#getPassword()
-	 */
-	@Override
-	public String getPassword() {
-		return password;
-	}
-	/* (non-Javadoc)
-	 * @see pk.com.mypetworld.server.users.model.IUser#setPassword(java.lang.String)
-	 */
-	@Override
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	
 	/* (non-Javadoc)
 	 * @see pk.com.mypetworld.server.users.model.IUser#getRegistrationDate()
 	 */

@@ -24,15 +24,6 @@ public interface IUser {
 	 */
 	public abstract void setEmailAddress(String emailAddress);
 
-	/**
-	 * @return the password
-	 */
-	public abstract String getPassword();
-
-	/**
-	 * @param password the password to set
-	 */
-	public abstract void setPassword(String password);
 
 	/**
 	 * @return the registrationDate
