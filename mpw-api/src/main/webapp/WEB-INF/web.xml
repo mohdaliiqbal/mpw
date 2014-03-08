@@ -6,7 +6,7 @@
   <display-name>My Pet World Web Application</display-name>
 	<context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:ApplicationContext.xml, classpath:ApplicationSecurity.xml
+        <param-value>classpath:ApplicationContext.xml, classpath:ApplicationSecurity.xml, classpath:ApplicationData.xml
         </param-value>        
     </context-param>
    

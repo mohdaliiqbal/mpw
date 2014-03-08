@@ -24,5 +24,6 @@ public enum UserAccountState {
 	 * When user was reported by other user, or for any other reason the account\
 	 * was manually/automatically locked by system.
 	 */
-	LOCKED
+	LOCKED;
+
 }

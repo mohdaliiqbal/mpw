@@ -8,15 +8,18 @@ import java.util.Date;
  * @author Ali
  *
  */
-public class User implements IUser {
-
+public class User  {
+	
+	String id;
 	String userId;
 	String emailAddress;
+	String firstName;
+	String lastName;
 	String password;
 	Date registrationDate;
 	UserAccountState accountState;
 	
-	
+	UserProfile userProfile;
 	
 	
 	public User(String userId, String emailAddress)
@@ -27,34 +30,34 @@ public class User implements IUser {
 		
 	}
 	
-	
-	
+	public User()
+	{
+		
+	}
 	
 	/* (non-Javadoc)
 	 * @see pk.com.mypetworld.server.users.model.IUser#getUserId()
 	 */
-	@Override
 	public String getUserId() {
 		return userId;
 	}
 	/* (non-Javadoc)
 	 * @see pk.com.mypetworld.server.users.model.IUser#setUserId(java.lang.String)
 	 */
-	@Override
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	/* (non-Javadoc)
 	 * @see pk.com.mypetworld.server.users.model.IUser#getEmailAddress()
 	 */
-	@Override
+	
 	public String getEmailAddress() {
 		return emailAddress;
 	}
 	/* (non-Javadoc)
 	 * @see pk.com.mypetworld.server.users.model.IUser#setEmailAddress(java.lang.String)
 	 */
-	@Override
+	
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
 	}
@@ -62,30 +65,66 @@ public class User implements IUser {
 	/* (non-Javadoc)
 	 * @see pk.com.mypetworld.server.users.model.IUser#getRegistrationDate()
 	 */
-	@Override
+	
 	public Date getRegistrationDate() {
 		return registrationDate;
 	}
 	/* (non-Javadoc)
 	 * @see pk.com.mypetworld.server.users.model.IUser#setRegistrationDate(java.util.Date)
 	 */
-	@Override
+	
 	public void setRegistrationDate(Date registrationDate) {
 		this.registrationDate = registrationDate;
 	}
 	/* (non-Javadoc)
 	 * @see pk.com.mypetworld.server.users.model.IUser#getAccountState()
 	 */
-	@Override
+	
 	public UserAccountState getAccountState() {
 		return accountState;
 	}
 	/* (non-Javadoc)
 	 * @see pk.com.mypetworld.server.users.model.IUser#setAccountState(pk.com.mypetworld.server.users.model.UserAccountState)
 	 */
-	@Override
+	
 	public void setAccountState(UserAccountState accountState) {
 		this.accountState = accountState;
+	}
+
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+	public String getLastName() {
+		return lastName;
+	}
+
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public UserProfile getUserProfile() {
+		return userProfile;
+	}
+
+	public void setUserProfile(UserProfile userProfile) {
+		this.userProfile = userProfile;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	

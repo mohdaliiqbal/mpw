@@ -3,7 +3,8 @@
  */
 package pk.com.mypetworld.server.users.service.api;
 
-import pk.com.mypetworld.server.users.model.IUser;
+import pk.com.mypetworld.server.users.model.User;
+
 
 /**
  * @author Ali
@@ -12,5 +13,12 @@ import pk.com.mypetworld.server.users.model.IUser;
 public interface UserService {
 
 	 
-	public IUser getUsers();
+	public Iterable<User> getUsers();
+	
+	
+	public boolean registerUser(User user);
+	
+	
+	public User getUser(String userId);
+	
 }
