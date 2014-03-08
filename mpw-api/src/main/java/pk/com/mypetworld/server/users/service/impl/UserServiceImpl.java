@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
 		if( userList != null && userList.size()>0)
 			throw new UserServiceException("User id already exist in the system. Please use another user id.");
 		
-		userList	= userRepository.findByUserId(user.getUserId());
+		userList	= userRepository.findByEmailAddress(user.getEmailAddress());
 		if( userList != null && userList.size()>0 )
 				throw new UserServiceException("Email id already exist in the system. Please use another email address.");
 		
