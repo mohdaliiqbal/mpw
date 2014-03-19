@@ -2,7 +2,7 @@
 
 /* Filters */
 
-angular.module('myApp.filters', []).
+angular.module('mpw-client.filters', []).
   filter('interpolate', ['version', function(version) {
         console.log("version :"+version);
     return function(text) {
