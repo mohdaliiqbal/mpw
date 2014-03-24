@@ -112,9 +112,15 @@ fetch the changes and merge them into your project with git.
           angular.min.js    --> the latest minified angular js
           angular-*.js      --> angular add-on modules
           version.txt       --> version number
-      partials/             --> angular view partials (partial html templates)
-        partial1.html
-        partial2.html
+      modules/             --> contains sub modules
+        main/
+          main.js          --> main module primary javascript file
+          main-controllers --> module controllers
+          main-services    --> module services
+          main-directives  --> module directives
+          partials/        --> partial view directory
+            login.html     --> main module's login view
+            register.html  --> main module's register view 
 
     config/karma.conf.js        --> config file for running unit tests with Karma
     config/protractor-conf.js    --> config file for running e2e tests with Protractor
