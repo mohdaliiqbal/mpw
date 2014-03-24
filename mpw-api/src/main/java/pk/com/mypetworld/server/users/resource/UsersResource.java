@@ -14,6 +14,8 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 
+import org.apache.log4j.Logger;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -31,6 +33,9 @@ import pk.com.mypetworld.server.users.service.api.UserService;
 @Scope("request")
 public class UsersResource {
 
+	private final static Logger log = Logger.getLogger( UsersResource.class.getName() );
+	
+	
     @Autowired
     private UserService service;
     
@@ -40,7 +45,9 @@ public class UsersResource {
     @GET
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON})
     public Iterable<User> getAllUsers() {
-        return service.getUsers();
+    	
+    	log.debug("Get all users service called..");
+    	return service.getUsers();
     }
     
     
@@ -48,7 +55,20 @@ public class UsersResource {
 	@Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
     public User getUserById(@PathParam("id") String userId) {
+    	log.debug("Get user by id service called.."+userId );
         return service.getUser(userId);
+    }
+    
+    @POST
+	@Produces(MediaType.APPLICATION_JSON)
+    @Path("/authenticate")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public User authenticateUser(String  jsonBodyStr) {
+    	
+    	JSONObject jsonBody = 	new JSONObject(jsonBodyStr);
+    	log.debug("Authenitcate user email and password.."+jsonBody.getString("email"));
+    	
+        return service.getUserByEmailAndPassword(jsonBody.getString("email"), jsonBody.getString("password"));
     }
     
     
@@ -56,6 +76,10 @@ public class UsersResource {
    	@Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
     public boolean registerUser(User user) throws WebApplicationException {
+    	
+    	log.debug("register user.."+user);
+    	
+    	
         return service.registerUser(user);
     }
 }

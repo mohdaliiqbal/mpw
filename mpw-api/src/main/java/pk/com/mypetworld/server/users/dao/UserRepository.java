@@ -3,11 +3,11 @@
  */
 package pk.com.mypetworld.server.users.dao;
 
+import java.util.List;
+
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import pk.com.mypetworld.server.users.model.User;
-import java.lang.String;
-import java.util.List;
 
 /**
  * @author Ali

@@ -94,6 +94,17 @@
 			<artifactId>jersey-media-json-jackson</artifactId>
 			<version>${jersey.version}</version>
 		</dependency>
+
+
+<!--  I initially used it because i thought it has converters from string to jsonobject but this freaking library has shit! only shitty interface.
+		keeping it just for times when we need some more shit in our project. Look at the fucking list of libraries we have so far. 
+			<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.json</artifactId>
+			<version>1.0.4</version>
+		</dependency>		
+ -->        	
+		
 		<dependency>
 		    <groupId>com.fasterxml.jackson.jaxrs</groupId>
 		    <artifactId>jackson-jaxrs-json-provider</artifactId>
@@ -118,6 +129,7 @@
 		        </exclusion>
 		    </exclusions>      
         </dependency>
+        
         <dependency>
             <groupId>org.glassfish.jersey.test-framework.providers</groupId>
             <artifactId>jersey-test-framework-provider-grizzly2</artifactId>
@@ -161,6 +173,12 @@
 			<version>${springsec.version}</version>
 		</dependency>
 		
+		<!-- Stupid library just to convert strings to json object find me a better way  ali -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20140107</version>
+		</dependency>		
 		
 		<!-- SPRING TESTING DEPENDENCIES -->
         <dependency>
@@ -169,7 +187,17 @@
             <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
-
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-webapp</artifactId>
+			<version>9.1.0.M0</version>
+		</dependency>
+		            
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-server</artifactId>
+			<version>9.1.0.M0</version>
+		</dependency>
 		
         <!-- LOG4J DEPENDENCY -->
         <dependency>
@@ -181,7 +209,7 @@
 	
    </dependencies>
   <build>
-    <finalName>adco-edms-rest-maximointegration</finalName>
+    <finalName>mpw-server</finalName>
         <plugins>
         
             <plugin>

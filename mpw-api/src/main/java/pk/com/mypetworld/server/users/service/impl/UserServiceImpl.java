@@ -5,6 +5,7 @@ package pk.com.mypetworld.server.users.service.impl;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,7 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired UserRepository userRepository;
 	
+	Logger logger = Logger.getLogger(UserServiceImpl.class.getName());
 
 	@Override
 	public Iterable<User> getUsers() {
@@ -66,6 +68,22 @@ public class UserServiceImpl implements UserService {
 
 
 	
+	@Override
+	public User getUserByEmailAndPassword(String email, String password) {
+		List<User> users = userRepository.findByEmailAddress(email);
+		
+		if( users != null && users.size() > 0)
+		{
+			logger.debug("Gets the user by email:"+email);
+			
+			return users.get(0);		
+		}
+		else {
+			return null;
+		}	
+	}
+	
+
 	
 	
 	

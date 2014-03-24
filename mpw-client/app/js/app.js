@@ -7,13 +7,12 @@ angular.module('mpw-client', [
   'mpw-client.filters',
   'mpw-client.services',
   'mpw-client.directives',
-  'mpw-client.controllers'
+  'mpw-client.controllers',
+  'mpw-client.main',
+  'mpw-client.user',
+  'ui.bootstrap'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/', {templateUrl: 'partials/partial0.html', controller: 'MainController'});
-	
-	$routeProvider.when('/login', {templateUrl: 'partials/partial1.html', controller: 'LoginController'});
-	
-  $routeProvider.when('/signup', {templateUrl: 'partials/partial2.html', controller: 'SignupController'});
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  $routeProvider.when('/', {templateUrl: './modules/main/partials/main.html', controller: 'MainController'});
+  $routeProvider.otherwise({templateUrl: './modules/main/partials/main.html', controller: 'MainController'});
 }]);

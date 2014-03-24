@@ -14,19 +14,19 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 
-    <context:component-scan base-package="ae.adco.edms.rest.maximointegration" />
+    <context:component-scan base-package="com.pk.mypetworld" />
 
     <sec:authentication-manager >
         <sec:authentication-provider>
-            <sec:user-service id="userAuthService">
+          <sec:user-service id="userAuthService">
                 <sec:user name="mpw-app" password="mpw" authorities="mpw-user" />
-            </sec:user-service>
+            </sec:user-service> 
         </sec:authentication-provider>
     </sec:authentication-manager>
 
     <sec:http  auto-config="true" create-session="stateless" use-expressions="true">
-        <sec:intercept-url pattern="/api/v01/**"
-            access="hasRole('mpw-user')" />
+        <sec:intercept-url pattern="/x/v01/**"
+            access="hasRole('')" />
 <!-- <sec:intercept-url pattern="/services/timeoftheday/asxml/**"
             access="hasRole('admin')" />
         <sec:intercept-url pattern="/services/timeoftheday/asjson/**"

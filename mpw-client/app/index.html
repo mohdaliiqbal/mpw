@@ -2,13 +2,17 @@
 <html lang="en" ng-app="mpw-client">
 <head>
   <meta charset="utf-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
   <title>My Pet World</title>
   <link rel="stylesheet" href="css/app.css"/>
+  <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"/>
 </head>
-<body ng-controller="LoginController">
+<body>
 	
 <div id="pagehead">
-   <strong>My Pet Care</strong>
+   <strong>MY PET WORLD</strong>
 </div>
 
 <div id="pagebody" ng-view >
@@ -17,8 +21,8 @@
 
 
 <div id="pagefooter">
-    Footer comes here
-	My Pet World version: v<span app-vers	ion></span>
+
+	©2014 MY PET WORLD: v<span app-version></span>
 </div>
 
 
@@ -28,10 +32,20 @@
   -->
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular/angular-route.js"></script>
+  <script src="lib/angularui/ui-bootstrap-0.10.0.min.js"></script>
+
+
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>
   <script src="js/controllers.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/directives.js"></script>
+  <script src="modules/main/main.js"></script>
+  <script src="modules/main/main-controllers.js"></script>
+  <script src="modules/main/main-services.js"></script>
+  <script src="modules/user/user.js"></script>
+  <script src="modules/user/user-controllers.js"></script>
+  <script src="modules/user/user-services.js"></script>
+
 </body>
 </html>

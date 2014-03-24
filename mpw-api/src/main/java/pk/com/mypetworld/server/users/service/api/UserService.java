@@ -21,4 +21,7 @@ public interface UserService {
 	
 	public User getUser(String userId);
 	
+	
+	public User getUserByEmailAndPassword(String email, String password);
+	
 }
