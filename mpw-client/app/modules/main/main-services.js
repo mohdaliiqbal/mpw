@@ -5,7 +5,9 @@
 
 // Demonstrate how to register services
 // In this case it is a simple value service.
-angular.module('mpw-client.main-authentication', []).factory('AuthenticationFactory',['$http', function ($http) {
+var mainServices = angular.module('mpw-client.main-authentication', ['$ngResource']);
+
+mainServices.factory('AuthenticationFactory',['$http', function ($http) {
 
         var authenticate = function(email, password)
         {
@@ -46,4 +48,17 @@ angular.module('mpw-client.main-authentication', []).factory('AuthenticationFact
             return promise;
         }
         return {'authenticate':authenticate};
+    }]);
+
+mainServices.factory('AuthenticationService',['$resource', function($resource) {
+
+        return $resource('http://localhost:8080/api/v01/users/:action', {},
+            {
+                authenticate: {
+                    method: 'POST',
+                    params: {'action' : 'authenticate'},
+                    headers : {'Content-Type': 'application/x-www-form-urlencoded'}
+                }
+            }
+        );
     }]);

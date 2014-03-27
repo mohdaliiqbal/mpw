@@ -17,7 +17,7 @@
 
     <filter-mapping>
         <filter-name>springSecurityFilterChain</filter-name>
-        <url-pattern>/api/v01/*</url-pattern>
+        <url-pattern>/api/v01/*</url-pattern>                
     </filter-mapping>
     
     <listener>

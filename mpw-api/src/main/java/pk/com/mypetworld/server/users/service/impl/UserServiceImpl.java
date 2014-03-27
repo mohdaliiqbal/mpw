@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
-	public boolean registerUser(User user) {
+	public boolean createUser(User user) {
 
 		List<User> userList	= userRepository.findByUserId(user.getUserId());
 		
@@ -82,10 +82,16 @@ public class UserServiceImpl implements UserService {
 			return null;
 		}	
 	}
-	
 
-	
-	
-	
+
+	@Override
+	public User getByEmailAddress(String emailaddress) {
+		List<User> users = userRepository.findByEmailAddress(emailaddress);
+		if( users != null && users.size()>0)
+			return users.get(0);
+		else 
+			return null;
+		
+	}	
 
 }

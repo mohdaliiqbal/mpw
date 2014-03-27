@@ -10,9 +10,15 @@
   <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"/>
 </head>
 <body>
-	
+<sham-spinner text="Loading..."></sham-spinner>
+
+
 <div id="pagehead">
    <strong>MY PET WORLD</strong>
+</div>
+
+<div class="loader" ng-hide="initialized">
+    Loading...
 </div>
 
 <div id="pagebody" ng-view >
@@ -21,7 +27,6 @@
 
 
 <div id="pagefooter">
-
 	©2014 MY PET WORLD: v<span app-version></span>
 </div>
 
@@ -46,6 +51,7 @@
   <script src="modules/user/user.js"></script>
   <script src="modules/user/user-controllers.js"></script>
   <script src="modules/user/user-services.js"></script>
+  <script src="module/sham-spinner/angular-sham-spinner.js"></script>
 
 </body>
 </html>

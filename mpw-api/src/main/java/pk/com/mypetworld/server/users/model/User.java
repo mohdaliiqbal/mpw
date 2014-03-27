@@ -8,7 +8,7 @@ import java.util.Date;
  * @author Ali
  *
  */
-public class User  {
+public class User {
 	
 	String id;
 	String userId;
@@ -17,9 +17,15 @@ public class User  {
 	String lastName;
 	String password;
 	Date registrationDate;
-	UserAccountState accountState;
+	boolean active;
 	
-	UserProfile userProfile;
+	
+	int age;
+	String sex;
+	String country;
+	
+	
+	
 	
 	
 	public User(String userId, String emailAddress)
@@ -80,15 +86,15 @@ public class User  {
 	 * @see pk.com.mypetworld.server.users.model.IUser#getAccountState()
 	 */
 	
-	public UserAccountState getAccountState() {
-		return accountState;
+	public boolean isActive() {
+		return active;
 	}
 	/* (non-Javadoc)
 	 * @see pk.com.mypetworld.server.users.model.IUser#setAccountState(pk.com.mypetworld.server.users.model.UserAccountState)
 	 */
 	
-	public void setAccountState(UserAccountState accountState) {
-		this.accountState = accountState;
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 
@@ -111,13 +117,6 @@ public class User  {
 		this.lastName = lastName;
 	}
 
-	public UserProfile getUserProfile() {
-		return userProfile;
-	}
-
-	public void setUserProfile(UserProfile userProfile) {
-		this.userProfile = userProfile;
-	}
 
 	public String getId() {
 		return id;
@@ -127,5 +126,22 @@ public class User  {
 		this.id = id;
 	}
 	
-	
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}	
 }

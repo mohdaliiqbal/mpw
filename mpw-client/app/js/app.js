@@ -10,6 +10,7 @@ angular.module('mpw-client', [
   'mpw-client.controllers',
   'mpw-client.main',
   'mpw-client.user',
+  'angularShamSpinner',
   'ui.bootstrap'
 ]).
 config(['$routeProvider', function($routeProvider) {
