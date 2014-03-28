@@ -12,10 +12,6 @@ angular.module('mpw-client.user-controllers', ['mpw-client.user-services']).
 
         console.log("Profile controller loaded.");
 
-//        $scope.login = function(){
-//            var authenitcationResult = AuthenticationFactory.authenticate($scope.email, $scope.password);
-//
-//        }
 
     }])
     //Settings page controller

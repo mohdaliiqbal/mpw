@@ -3,6 +3,7 @@
  */
 package pk.com.mypetworld.server.users.resource;
 
+import javax.management.BadAttributeValueExpException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -21,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -106,6 +108,8 @@ public class UsersResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public TokenTransfer authenticate(@FormParam("email") String email, @FormParam("password") String password) {
 
+		try {
+		
 		UsernamePasswordAuthenticationToken authenticationToken =
 				new UsernamePasswordAuthenticationToken(email, password);
 		Authentication authentication = this.authManager.authenticate(authenticationToken);
@@ -118,6 +122,11 @@ public class UsersResource {
 		UserDetails userDetails = this.userService.loadUserByUsername(email);
 
 		return new TokenTransfer(TokenUtils.createToken(userDetails));
+		
+		
+		} catch (BadCredentialsException exception) {
+			throw new WebApplicationException("Email address and password do not match.", 401);
+		}
 	}
     
     
