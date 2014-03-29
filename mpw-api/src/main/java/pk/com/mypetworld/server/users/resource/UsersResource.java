@@ -34,6 +34,7 @@ import org.springframework.stereotype.Component;
 import pk.com.mypetworld.server.common.ErrorResponse;
 import pk.com.mypetworld.server.security.TokenUtils;
 import pk.com.mypetworld.server.security.transfer.TokenTransfer;
+import pk.com.mypetworld.server.users.exception.UserServiceException;
 import pk.com.mypetworld.server.users.model.User;
 import pk.com.mypetworld.server.users.service.api.UserService;
 
@@ -139,13 +140,25 @@ public class UsersResource {
     
     
     @POST    
-   	@Produces(MediaType.TEXT_PLAIN)
+   	@Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public boolean createUser(User user) throws WebApplicationException {
-    	
+
+    	try {
+			
     	log.debug("register user.."+user);
     	
     	
         return service.createUser(user);
+        
+
+		} catch (UserServiceException e) {
+
+			ErrorResponse response = new ErrorResponse();
+			response.setError(403);
+			response.setMessage(e.getMessage());
+			
+			throw new WebApplicationException(Response.status(403).entity(response).build());
+		}
     }
 }

@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-angular.module('mpw-client.main-controllers', ['mpw-client.main-authentication']).
+angular.module('mpw-client.main-controllers', ['mpw-client.main-services']).
     controller('LoginController', [ '$rootScope','$location','$scope','$cookieStore','AuthenticationService',function($rootScope, $location, $scope,$cookieStore, AuthenticationService) {
         <!-- Login controller -->
 
@@ -31,9 +31,29 @@ angular.module('mpw-client.main-controllers', ['mpw-client.main-authentication']
             }
             );
         };
+
+
   }])
-  .controller('SingupController', [function() {
+  .controller('SignupController', ['$rootScope','$scope','$location','SignupService', function($rootScope, $scope, $location, SignupService) {
         console.log("The signup controller is called.");
+
+        /*initialize the things required by signup page*/
+        $scope.user = {};
+
+        $scope.signup = function()
+        {
+            SignupService.signup($scope.user, function(signupResult) {
+
+                    $location.path("/login");
+
+                }, function(signupFailureResult)
+                {
+                    signupFailureResult.message;
+                    $scope.signupMessage= "*"+ signupFailureResult.data.message;
+                }
+            );
+        }
+
   }]).controller('MainController', [function() {
         console.log("The main controller is called.");
 }]);

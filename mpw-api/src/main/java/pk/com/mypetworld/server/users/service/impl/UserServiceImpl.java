@@ -5,6 +5,8 @@ package pk.com.mypetworld.server.users.service.impl;
 
 import java.util.List;
 
+import javax.ws.rs.core.Response;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,7 +45,7 @@ public class UserServiceImpl implements UserService {
 		
 	
 		if( userList != null && userList.size()>0)
-			throw new UserServiceException("User id already exist in the system. Please use another user id.");
+			throw new UserServiceException( "User id already exist in the system. Please use another user id.");
 		
 		userList	= userRepository.findByEmailAddress(user.getEmailAddress());
 		if( userList != null && userList.size()>0 )

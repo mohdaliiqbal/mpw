@@ -1,6 +1,6 @@
 angular.module('mpw-client.main',
 
-        [ 'mpw-client.main-controllers','mpw-client.main-authentication']
+        [ 'mpw-client.main-controllers','mpw-client.main-services']
 
     ).
     config(
@@ -13,7 +13,7 @@ angular.module('mpw-client.main',
         controller: 'LoginController'
     });
     $routeProvider.when('/signup', {
-        templateUrl: './modules/main/partials/register.html',
+        templateUrl: './modules/main/partials/signup.html',
         controller: 'SignupController'
     });
     $routeProvider.otherwise({
@@ -53,7 +53,7 @@ angular.module('mpw-client.main',
 
         /* Try getting valid user from cookie or go to login page */
         var originalPath = $location.path();
-        $location.path("/login");
+
         var authToken = $cookieStore.get('authToken');
         if (authToken !== undefined) {
             $rootScope.authToken = authToken;

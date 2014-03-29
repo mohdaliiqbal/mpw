@@ -16,13 +16,14 @@
 
     <context:component-scan base-package="com.pk.mypetworld" />
 
-    <sec:authentication-manager  id="authenticationManager">
-        <sec:authentication-provider>
-          <sec:user-service id="userAuthService">
-                <sec:user name="mpwapp" password="mpw" authorities="mpwuser" />
+    <sec:authentication-manager  id="authenticationManager" >
+        <sec:authentication-provider >
+          <sec:user-service id="userAuthService" >
+                <sec:user name="mpwapp" password="mpw" authorities="mpwuser"  />
             </sec:user-service>         
         </sec:authentication-provider>
     </sec:authentication-manager>
+    
 
    	<bean id="passwordEncoder" class="pk.com.mypetworld.server.security.SaltedSHA256PasswordEncoder">
 		<constructor-arg value="secret" />
@@ -52,8 +53,9 @@
     <sec:http pattern="/api/v01/users/authenticate" security="none"
         realm="Protected API"
         auto-config="false"
-        create-session="stateless">		
+        create-session="stateless">
 	</sec:http>
+
     
     <sec:http
 			realm="Protected API"
@@ -63,10 +65,10 @@
 			entry-point-ref="unauthorizedEntryPoint"			
 			authentication-manager-ref="authenticationManager">
 		<sec:custom-filter ref="authenticationTokenProcessingFilter" position="FORM_LOGIN_FILTER" />
-
+		
+		<sec:intercept-url method="GET" pattern="/api/v01/**" access="permitAll" />
 		<sec:intercept-url method="GET" pattern="/api/v01/**" access="hasRole('mpwuser')" />
 		<sec:intercept-url method="PUT" pattern="/api/v01/**" access="hasRole('mpwuser')" />
-		<sec:intercept-url method="POST" pattern="/api/v01/**" access="hasRole('mpwuser')" />
 		<sec:intercept-url method="DELETE" pattern="/api/v01/**" access="hasRole('mpwuser')" />   
 	</sec:http>
 	

@@ -1,0 +1,69 @@
+<div class="container">
+
+
+			<header>
+				<h1><span>Sign up</span> </h1>
+            </header>
+      <div  class="form">
+    		<form name="form" class="css-form" id="contactform">
+    			<p class="contact"><label for="name">Name</label></p> 
+    			<input id="name" name="name" placeholder="First and last name" ng-model="user.username" required tabindex="1" type="text">
+    			 
+    			<p class="contact"><label for="email">Email</label></p> 
+    			<input id="email" name="email" placeholder="example@domain.com" ng-model="user.email" required tabindex="2" type="email">
+                
+                <p class="contact"><label for="username">Create a username</label></p> 
+    			<input id="username" name="username" placeholder="username" ng-model="user.username"  required="" tabindex="3" type="text">
+    			 
+                <p class="contact"><label for="password">Create a password</label></p> 
+    			<input type="password" id="password" name="password" ng-model="user.password" tabindex="4"   required>
+                <p class="contact"><label for="repassword">Confirm your password</label></p> 
+    			<input type="password" id="repassword" name="repassword"  ng-model="user.password2" tabindex="5"   required>
+        
+               <fieldset>
+                 <label>Birthday</label>
+                  <label class="month"> 
+                  <select class="select-style" name="BirthMonth" ng-model="user.birthmonth" tabindex="6">
+                  <option value="">Month</option>
+                  <option  value="01">January</option>
+                  <option value="02">February</option>
+                  <option value="03" >March</option>
+                  <option value="04">April</option>
+                  <option value="05">May</option>
+                  <option value="06">June</option>
+                  <option value="07">July</option>
+                  <option value="08">August</option>
+                  <option value="09">September</option>
+                  <option value="10">October</option>
+                  <option value="11">November</option>
+                  <option value="12" >December</option>
+                  </label>
+                 </select>    
+                <label>Day<input class="birthday" maxlength="2" name="BirthDay" ng-model="user.birthday"  placeholder="Day" tabindex="7" required></label>
+                <label>Year <input class="birthyear" maxlength="4" name="BirthYear" placeholder="Year" ng-model="user.birthyear" tabindex="8" required></label>
+              </fieldset>
+  
+            <select class="select-style gender" name="gender" ng-model="user.gender" tabindex="9">
+            <option value="select">i am..</option>
+            <option value="m">Male</option>
+            <option value="f">Female</option>
+            <option value="others">Other</option>
+            </select><br><br>
+            
+            <p class="contact"><label for="phone">Mobile phone</label></p> 
+            <input id="phone" name="phone" placeholder="phone number" required ng-model="user.mobile" type="text" tabindex="10"> <br>
+            <p style="color:#d22423"><label >{{signupMessage}}</label></p>
+            <input class="btn btn-sm btn-default" name="submit" id="submit" tabindex="11" value="Sign me up!" ng-click="signup()">
+   </form> 
+</div>      
+</div>
+
+<style type="text/css">
+    .css-form input.ng-invalid.ng-dirty {
+        background-color: #FA787E;
+    }
+
+    .css-form input.ng-valid.ng-dirty {
+        background-color: #78FA89;
+    }
+</style>

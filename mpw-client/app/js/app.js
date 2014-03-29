@@ -18,7 +18,7 @@ config(['$routeProvider', '$httpProvider', '$locationProvider', function($routeP
   $routeProvider.when('/', {templateUrl: './modules/main/partials/main.html', controller: 'MainController'});
   $routeProvider.otherwise({templateUrl: './modules/main/partials/main.html', controller: 'MainController'});
 
-        $locationProvider.hashPrefix('!');
+        //$locationProvider.hashPrefix('!');
 
         /* Register error provider that shows message on failed requests or redirects to login page on
          * unauthenticated requests */
