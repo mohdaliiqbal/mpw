@@ -55,6 +55,20 @@ body {
 	text-shadow: #fff 2px 2px 2px;
 }
 
+#authentication_error
+{
+    margin-left:25px;
+    position:absolute;
+    width:300;
+    height:50px;
+    margin-top:20px;
+    color: #d44f22;
+}
+
+#authentication_error div{
+    color: #d44f2a;
+}
+
 #username_input {
 	margin-left:25px;
 	position:absolute;

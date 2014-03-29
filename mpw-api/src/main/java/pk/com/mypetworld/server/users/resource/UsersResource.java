@@ -14,6 +14,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import org.apache.log4j.Logger;
@@ -30,6 +31,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
+import pk.com.mypetworld.server.common.ErrorResponse;
 import pk.com.mypetworld.server.security.TokenUtils;
 import pk.com.mypetworld.server.security.transfer.TokenTransfer;
 import pk.com.mypetworld.server.users.model.User;
@@ -125,7 +127,13 @@ public class UsersResource {
 		
 		
 		} catch (BadCredentialsException exception) {
-			throw new WebApplicationException("Email address and password do not match.", 401);
+			
+			ErrorResponse response = new ErrorResponse();
+			response.setError(403);
+			response.setMessage("Email address and password do not match.");
+			
+			//create a response wrapping the error response entity
+			throw new WebApplicationException(Response.status(403).entity(response).build());
 		}
 	}
     

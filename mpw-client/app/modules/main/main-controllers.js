@@ -24,7 +24,12 @@ angular.module('mpw-client.main-controllers', ['mpw-client.main-authentication']
                     $rootScope.user = user;
                     $location.path("/user/profile");
                 }); */
-            });
+            }, function(authenticationFailureResult)
+            {
+                authenticationFailureResult.message;
+                $scope.authenticationMessage= "*"+ authenticationFailureResult.data.message;
+            }
+            );
         };
   }])
   .controller('SingupController', [function() {

@@ -52,8 +52,7 @@
     <sec:http pattern="/api/v01/users/authenticate" security="none"
         realm="Protected API"
         auto-config="false"
-        create-session="stateless"
-        entry-point-ref="authenticationFailedEntryPoint">		
+        create-session="stateless">		
 	</sec:http>
     
     <sec:http

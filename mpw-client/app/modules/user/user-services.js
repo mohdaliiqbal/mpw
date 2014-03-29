@@ -8,7 +8,7 @@
 
 // Demonstrate how to register services
 // In this case it is a simple value service.
-angular.module('mpw-client.user-services', []).factory('UserFactory',['$http', function ($http) {
+angular.module('mpw-client.user-services', []);/*.factory('UserFactory',['$http', function ($http) {
 
-    return {'authenticate':false};
-}]);
+    //return {'authenticate':false};
+}]);*/
