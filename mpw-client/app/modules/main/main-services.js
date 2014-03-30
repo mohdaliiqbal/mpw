@@ -30,5 +30,8 @@ var mainServices = angular.module('mpw-client.main-services', ['ngResource'])
         );
     }
 
-    ]);
+    ]).factory('GeoNameCountryNameService',['$resource', function($resource)
+    {
+        return $resource('http://api.geonames.org/countryInfo?username=mpwclient&type=json', {});
+    }]);
 

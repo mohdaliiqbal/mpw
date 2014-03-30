@@ -7,7 +7,7 @@ angular.module('mpw-client.main',
         [ '$routeProvider', '$locationProvider', '$httpProvider', function($routeProvider, $locationProvider, $httpProvider) {
 
 
-            //routes that can be handled by main module
+    //register routes that can be handled by main module
     $routeProvider.when('/login', {
         templateUrl: './modules/main/partials/login.html',
         controller: 'LoginController'

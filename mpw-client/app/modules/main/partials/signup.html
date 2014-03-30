@@ -1,25 +1,40 @@
 <div class="container">
-
-
-			<header>
-				<h1><span>Sign up</span> </h1>
-            </header>
+      <header>
+      <h1><span>Sign up</span> </h1>
+      </header>
       <div  class="form">
     		<form name="form" class="css-form" id="contactform">
-    			<p class="contact"><label for="name">Name</label></p> 
-    			<input id="name" name="name" placeholder="First and last name" ng-model="user.username" required tabindex="1" type="text">
+    			<p class="contact"><label for="name">Full Name</label></p>
+    			<input id="name" name="name" placeholder="First and last name" ng-model="fullName" required tabindex="1" type="text">
     			 
     			<p class="contact"><label for="email">Email</label></p> 
-    			<input id="email" name="email" placeholder="example@domain.com" ng-model="user.email" required tabindex="2" type="email">
+    			<input id="email" name="email" placeholder="example@domain.com" ng-model="user.emailAddress" required tabindex="2" type="email">
                 
-                <p class="contact"><label for="username">Create a username</label></p> 
-    			<input id="username" name="username" placeholder="username" ng-model="user.username"  required="" tabindex="3" type="text">
+                <p class="contact"><label for="userId">Create a username</label></p>
+    			<input id="userId" name="userId" placeholder="user name" ng-model="user.userId"  required="" tabindex="3" type="text">
     			 
                 <p class="contact"><label for="password">Create a password</label></p> 
-    			<input type="password" id="password" name="password" ng-model="user.password" tabindex="4"   required>
+    			<input type="password" id="password" name="password" ng-model="user.password" tabindex="4"   ng-required>
                 <p class="contact"><label for="repassword">Confirm your password</label></p> 
-    			<input type="password" id="repassword" name="repassword"  ng-model="user.password2" tabindex="5"   required>
-        
+    			<input type="password" id="repassword" name="repassword"  ng-model="password2" tabindex="5"   ng-required>
+
+                <p class="contact">
+                 <label for="birthdate" >Birthdate</label>
+                </p>
+                <input type="date" id="birthdate" ng-model="   birthdate" tabindex="6" ng-required />
+
+
+                <p class="contact">
+                    <label for="country" >Country</label>
+                </p>
+
+                <!-- country loading -->
+                <select id="country" ng-model="user.country">
+                    <option ng-repeat="country in countries" value="{{country.countryName}}">{{country.countryName}}</option>
+                </select>
+
+
+                <!--
                <fieldset>
                  <label>Birthday</label>
                   <label class="month"> 
@@ -37,21 +52,32 @@
                   <option value="10">October</option>
                   <option value="11">November</option>
                   <option value="12" >December</option>
+                  </select>
                   </label>
-                 </select>    
-                <label>Day<input class="birthday" maxlength="2" name="BirthDay" ng-model="user.birthday"  placeholder="Day" tabindex="7" required></label>
+
+                 </select>
+
+
+                <label>Day
+                    <select ng-model="dayValue" ng-options="val for val in daysOptions">
+                        <option value="">Select</option>
+                    </select>
+                    <input class="birthday" maxlength="2" name="BirthDay" ng-model="user.birthday"  placeholder="Day" tabindex="7" required>
+                </label>
                 <label>Year <input class="birthyear" maxlength="4" name="BirthYear" placeholder="Year" ng-model="user.birthyear" tabindex="8" required></label>
               </fieldset>
-  
-            <select class="select-style gender" name="gender" ng-model="user.gender" tabindex="9">
+  -->
+
+            <p class="contact">
+            <label for="gender">Gender</label>
+            </p>
+            <select id="gender" class="select-style gender" name="gender" ng-model="user.gender" tabindex="9">
             <option value="select">i am..</option>
-            <option value="m">Male</option>
-            <option value="f">Female</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
             <option value="others">Other</option>
             </select><br><br>
-            
-            <p class="contact"><label for="phone">Mobile phone</label></p> 
-            <input id="phone" name="phone" placeholder="phone number" required ng-model="user.mobile" type="text" tabindex="10"> <br>
+
             <p style="color:#d22423"><label >{{signupMessage}}</label></p>
             <input class="btn btn-sm btn-default" name="submit" id="submit" tabindex="11" value="Sign me up!" ng-click="signup()">
    </form> 

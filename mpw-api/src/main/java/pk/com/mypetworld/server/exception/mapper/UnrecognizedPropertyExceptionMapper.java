@@ -7,15 +7,18 @@ import javax.ws.rs.ext.Provider;
 
 import pk.com.mypetworld.server.common.ErrorResponse;
 
+import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.exc.UnrecognizedPropertyException;
 
 @Provider
 public class UnrecognizedPropertyExceptionMapper implements ExceptionMapper<UnrecognizedPropertyException>
 {
+	Logger logger = Logger.getLogger(UnrecognizedPropertyExceptionMapper.class);
 
     @Override
     public Response toResponse(UnrecognizedPropertyException exception)
     {
+    	logger.error(exception);
     	
     	ErrorResponse error = new ErrorResponse(); //_MAPPER.readValue(responseContext.getEntityStream(), ErrorResponse.class);
 	

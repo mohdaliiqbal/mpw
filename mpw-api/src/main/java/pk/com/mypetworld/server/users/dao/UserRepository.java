@@ -18,4 +18,6 @@ public interface UserRepository extends PagingAndSortingRepository<User, String>
 	public List<User> findByUserId(String userid); 
 	
 	public List<User> findByEmailAddress(String emailaddress); 
+	
+	public List<User> findByEmailAddressAndPassword(String emailAddress, String password);
 }

@@ -31,6 +31,8 @@ public class AuthenticationTokenProcessingFilter extends GenericFilterBean {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,
 			ServletException {
 
+ 
+		
 		HttpServletRequest httpRequest = this.getAsHttpRequest(request);
 
 		String authToken = this.extractAuthTokenFromRequest(httpRequest);
@@ -74,5 +76,5 @@ public class AuthenticationTokenProcessingFilter extends GenericFilterBean {
 		}
 
 		return authToken;
-	}
+	}	
 }

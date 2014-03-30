@@ -30,10 +30,12 @@ config(['$routeProvider', '$httpProvider', '$locationProvider', function($routeP
                         var method = config.method;
                         var url = config.url;
 
-                        if (status == 401) {
+                        if (status == 401 || status ==0) {
                             $location.path( "/login" );
-                        } else {
-                            $rootScope.error = method + " on " + url + " failed with status " + status;
+                        }
+                        else{
+                                $rootScope.error = method + " on " + url + " failed with status " + status;
+
                         }
 
                         return $q.reject(rejection);
@@ -47,8 +49,8 @@ config(['$routeProvider', '$httpProvider', '$locationProvider', function($routeP
         $httpProvider.interceptors.push(function ($q, $rootScope, $location) {
             return {
                 'request': function(config) {
-                    var isRestCall = config.url.indexOf('rest') == 0;
-                    if (isRestCall && angular.isDefined($rootScope.authToken)) {
+
+                    if (angular.isDefined($rootScope.authToken)) {
                         var authToken = $rootScope.authToken;
                         if (mpwConfig.useAuthTokenHeader) {
                             config.headers['X-Auth-Token'] = authToken;

@@ -7,7 +7,8 @@ angular.module('mpw-client.user',
 
     ).
     config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/user/profile', {templateUrl: './modules/user/partials/profile.html', controller: 'LoginController'});
-        $routeProvider.when('/user/settings', {templateUrl: './modules/user/partials/settings.html', controller: 'SignupController'});
-        $routeProvider.otherwise({templateUrl:'./modules/main/partials/main.html', controller:'MainController'});
+
+        //register the routes user module can handle.
+        $routeProvider.when('/user/profile', {templateUrl: './modules/user/partials/profile.html', controller: 'ProfileController'});
+        $routeProvider.when('/user/settings', {templateUrl: './modules/user/partials/settings.html', controller: 'SettingsController'});
     }]);

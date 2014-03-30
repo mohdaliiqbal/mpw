@@ -52,7 +52,7 @@ public class UsersResource {
 	
 
 	@Autowired
-	private UserDetailsService userService;
+	private UserDetailsService usersDetailsService;
 	
 	
 	@Autowired
@@ -122,9 +122,11 @@ public class UsersResource {
 		 * Reload user as password of authentication principal will be null after authorization and
 		 * password is needed for token generation
 		 */
-		UserDetails userDetails = this.userService.loadUserByUsername(email);
+		UserDetails userDetails = this.usersDetailsService.loadUserByUsername(email);
+		User user = this.service.getByEmailAddress(email);
+		
 
-		return new TokenTransfer(TokenUtils.createToken(userDetails));
+		return new TokenTransfer(TokenUtils.createToken(userDetails), user.getUserId());
 		
 		
 		} catch (BadCredentialsException exception) {

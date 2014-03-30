@@ -1,12 +1,12 @@
 <link type="text/css" rel="stylesheet" href="css/mainstyle.css" media="screen" />
-<div id="pagebody" ng-controller="ProfileController">
+<div id="pagebody">
 	<div id="profilearea">
 		<p><img id="displaypic" src="img/Trollface.png"/><br/><h3><span id="username">John Doe</span>'s Profile</h3></p>
 		
 		<div id="userprofileelements">
 		<p>Name: {{user.firstName}} {{user.lastName}}</p>
-		<p>Age: {{user.userProfile.bioData.age}}</p>
-		<p>Country {{user.userProfile.bioData.country}}</p>
+		<p>Age: {{user.userProfile.age}}</p>
+		<p>Country {{user.userProfile.country}}</p>
 		<p>Email: {{user.emailAddress}}</p>
 		</div>
 

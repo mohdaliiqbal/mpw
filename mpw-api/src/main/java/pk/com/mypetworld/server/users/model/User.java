@@ -1,6 +1,10 @@
 package pk.com.mypetworld.server.users.model;
 
+import java.util.Calendar;
 import java.util.Date;
+
+
+import pk.com.mypetworld.server.common.UtilityMethods;
 
 /**
  * Basic user entity that defines a system user. All fields should only be relevant to identify 
@@ -17,11 +21,12 @@ public class User {
 	String lastName;
 	String password;
 	Date registrationDate;
-	boolean active;
+	Date birthdate;
+	boolean active = true;
 	
 	
 	int age;
-	String sex;
+	String gender;
 	String country;
 	
 	
@@ -87,7 +92,8 @@ public class User {
 	 */
 	
 	public boolean isActive() {
-		return active;
+		//every account is true right now
+		return true;
 	}
 	/* (non-Javadoc)
 	 * @see pk.com.mypetworld.server.users.model.IUser#setAccountState(pk.com.mypetworld.server.users.model.UserAccountState)
@@ -132,16 +138,34 @@ public class User {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public String getSex() {
-		return sex;
+	public String getGender() {
+		return gender;
 	}
-	public void setSex(String sex) {
-		this.sex = sex;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 	public String getCountry() {
 		return country;
 	}
 	public void setCountry(String country) {
 		this.country = country;
+	}
+
+	public Date getBirthdate() {
+		return birthdate;
+	}
+
+	public void setBirthdate(Date birthdate) {
+		this.birthdate = birthdate;
+		
+		UtilityMethods.getDiffYears(birthdate, Calendar.getInstance().getTime());
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}	
 }
