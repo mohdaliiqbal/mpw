@@ -5,10 +5,10 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
-import pk.com.mypetworld.server.common.ErrorResponse;
-
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.exc.UnrecognizedPropertyException;
+
+import pk.com.mypetworld.server.common.ErrorResponse;
 
 @Provider
 public class UnrecognizedPropertyExceptionMapper implements ExceptionMapper<UnrecognizedPropertyException>

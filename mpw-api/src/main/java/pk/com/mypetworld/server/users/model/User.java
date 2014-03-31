@@ -3,7 +3,6 @@ package pk.com.mypetworld.server.users.model;
 import java.util.Calendar;
 import java.util.Date;
 
-
 import pk.com.mypetworld.server.common.UtilityMethods;
 
 /**

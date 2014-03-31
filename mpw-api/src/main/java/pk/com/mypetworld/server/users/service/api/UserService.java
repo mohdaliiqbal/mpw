@@ -3,8 +3,6 @@
  */
 package pk.com.mypetworld.server.users.service.api;
 
-import org.springframework.security.core.userdetails.UserDetails;
-
 import pk.com.mypetworld.server.users.model.User;
 
 

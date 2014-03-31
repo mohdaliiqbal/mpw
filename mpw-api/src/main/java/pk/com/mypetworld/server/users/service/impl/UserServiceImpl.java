@@ -5,8 +5,6 @@ package pk.com.mypetworld.server.users.service.impl;
 
 import java.util.List;
 
-import javax.ws.rs.core.Response;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
