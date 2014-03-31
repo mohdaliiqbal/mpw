@@ -37,7 +37,7 @@ body {
 
 #wrappermiddle {
 	background:url(../img/wrapper_middle.png) repeat-y;
-	height:240px;
+	height:260px;
 }
 
 #wrapperbottom {
@@ -47,6 +47,7 @@ body {
 
 #wrapper h2 {
 	margin-left:20px;
+    margin-top:-10px;
 	font-size:20px;
 	font-weight:bold;
 	font-family:Myriad Pro;
@@ -66,6 +67,7 @@ body {
 }
 
 #authentication_error div{
+    margin-top:20px;
     color: #d44f2a;
 }
 
@@ -73,8 +75,8 @@ body {
 	margin-left:25px;
 	position:absolute;
 	width:300;
-	height:50px;
-	margin-top:40px;
+	height:40px;
+	margin-top:60px;
 }
 
 #username_inputleft {
@@ -135,7 +137,7 @@ body {
 	position:absolute;
 	width:300;
 	height:50px;
-	margin-top:100px;
+	margin-top:120px;
 }
 
 #password_inputleft {
@@ -171,10 +173,10 @@ body {
 	float:left;
 	position:relative;
 	padding:0;
-	margin-top:160px;
+	margin-top:190px;
 	margin-left:25px;
 	width:300px;
-	height:40px;
+	height:30px;
 	border:0;
 }
 

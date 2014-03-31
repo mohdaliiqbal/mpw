@@ -15,6 +15,7 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
 
 import org.apache.log4j.Logger;
@@ -132,11 +133,11 @@ public class UsersResource {
 		} catch (BadCredentialsException exception) {
 			
 			ErrorResponse response = new ErrorResponse();
-			response.setError(403);
+			response.setError(Status.FORBIDDEN.getStatusCode());
 			response.setMessage("Email address and password do not match.");
 			
 			//create a response wrapping the error response entity
-			throw new WebApplicationException(Response.status(403).entity(response).build());
+			throw new WebApplicationException(Response.status(Status.FORBIDDEN).entity(response).build());
 		}
 	}
     

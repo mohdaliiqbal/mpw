@@ -19,6 +19,7 @@ angular.module('mpw-client.main-controllers', ['mpw-client.main-services']).
                 if ($scope.rememberMe) {
                     $cookieStore.put('authToken', authToken);
                 }
+                $rootScope.loggedIn = true;
 
                 $location.path("/user/profile");
                 /*
@@ -28,7 +29,11 @@ angular.module('mpw-client.main-controllers', ['mpw-client.main-services']).
                 }); */
             }, function(authenticationFailureResult)
             {
-                $scope.authenticationMessage= "*"+ authenticationFailureResult.data.message;
+
+                if(authenticationFailureResult.data != null )
+                    $scope.authenticationMessage = authenticationFailureResult.data.message;
+                else
+                    $scope.authenticationMessage= "User name or password do not match. try again.";
             }
             );
         };
@@ -101,4 +106,14 @@ angular.module('mpw-client.main-controllers', ['mpw-client.main-services']).
 
   }]).controller('MainController', [function() {
         console.log("The main controller is called.");
-}]);
+}]).controller('LogoutController', ['$rootScope', '$scope', '$location', function($rootScope, $scope,$location)
+    {
+        console.log("logout controller initialized");
+        $scope.logout = function() {
+            $rootScope.user = null;
+            $rootScope.authToken = null;
+            $rootScope.loggedIn = false;
+            return "#/logout";
+        }
+    }
+    ]);

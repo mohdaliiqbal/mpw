@@ -17,6 +17,11 @@
 
 <div id="pagehead">
    <strong>MY PET WORLD</strong>
+
+    <div ng-controller="LogoutController">
+        <div ng-show="loggedIn"><a href="#/logout" ng-click="logout()">Logout</a></div>
+    </div>
+
 </div>
 
 <div class="loader" ng-hide="initialized">

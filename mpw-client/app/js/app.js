@@ -14,9 +14,10 @@ angular.module('mpw-client', [
   'ui.bootstrap',
   'ngCookies'
 ]).
-config(['$routeProvider', '$httpProvider', '$locationProvider', function($routeProvider, $httpProvider, $locationProvider) {
+config(['$routeProvider', '$httpProvider', '$locationProvider', function( $routeProvider, $httpProvider, $locationProvider) {
   $routeProvider.when('/', {templateUrl: './modules/main/partials/main.html', controller: 'MainController'});
   $routeProvider.otherwise({templateUrl: './modules/main/partials/main.html', controller: 'MainController'});
+
 
         //$locationProvider.hashPrefix('!');
 
