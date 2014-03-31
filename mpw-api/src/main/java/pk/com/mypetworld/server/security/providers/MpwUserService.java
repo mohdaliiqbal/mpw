@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.eclipse.jetty.security.MappedLoginService.Anonymous;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -38,19 +39,25 @@ public class MpwUserService implements UserDetailsService {
 	
 		logger.debug("ENTER");
 		
-		List<User> userList = userRepository.findByEmailAddress(username);
-		
-		if(userList != null && userList.size()>0)
+		if( username == null )
 		{
-			logger.debug("User found by "+username);
+			MpwUsersDetails usersDetails = new MpwUsersDetails(new User("anonymous", "anonymous"));
+			return usersDetails;
+		}
+		else {			
+		
+			List<User> userList = userRepository.findByEmailAddress(username);
 			
-			return new MpwUsersDetails(userList.get(0));
+			if(userList != null && userList.size()>0)
+			{
+				logger.debug("User found by "+username);
+				
+				return new MpwUsersDetails(userList.get(0));
+			}
+			else {
+				throw new UsernameNotFoundException("Email id or password do not match");
+			}
 		}
-		else {
-			throw new UsernameNotFoundException("Email id or password do not match");
-		}
-		
-		
 		//return null;
 	}
 
@@ -66,12 +73,21 @@ public class MpwUserService implements UserDetailsService {
 		 * Unique id for the serialization.
 		 */
 		private static final long serialVersionUID = 1L;
+		List<GrantedAuthority> grantedAuths = new ArrayList<GrantedAuthority>();
 		
 		//the user model embedded into user details.
 		User user = null;
 		
 		public MpwUsersDetails(User user) {
 			this.user = user;
+			
+			//currently only mpwuser is the role we are granting. Later this method could query the user repository and get more details.
+			if( !user.getUserId().equals("anonymous"))
+				grantedAuths.add(new SimpleGrantedAuthority("mpwuser"));
+			else {
+				grantedAuths.add(new SimpleGrantedAuthority("anonymous"));
+			}
+			
 		}
 		
 		@Override
@@ -113,9 +129,6 @@ public class MpwUserService implements UserDetailsService {
 		@Override
 		public Collection<? extends GrantedAuthority> getAuthorities() {
 			
-			//currently only mpwuser is the role we are granting. Later this method could query the user repository and get more details.
-			List<GrantedAuthority> grantedAuths = new ArrayList<GrantedAuthority>();
-	        grantedAuths.add(new SimpleGrantedAuthority("mpwuser"));
 			return grantedAuths;
 		}
 	}

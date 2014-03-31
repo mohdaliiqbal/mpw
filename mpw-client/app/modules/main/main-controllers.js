@@ -92,6 +92,8 @@ angular.module('mpw-client.main-controllers', ['mpw-client.main-services']).
 
             //calling signup service on the server
             SignupService.signup($scope.user, function(signupResult) {
+
+
                     $location.path("/login");
 
                 }, function(signupFailureResult)

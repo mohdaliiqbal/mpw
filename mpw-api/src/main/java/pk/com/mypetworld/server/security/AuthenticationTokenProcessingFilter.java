@@ -50,6 +50,12 @@ public class AuthenticationTokenProcessingFilter extends GenericFilterBean {
 				SecurityContextHolder.getContext().setAuthentication(authentication);
 			}
 		}
+		else {
+			UserDetails details = this.userService.loadUserByUsername(null);
+			
+			UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(details, null, details.getAuthorities());
+			SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+		}
 
 		chain.doFilter(request, response);
 	}

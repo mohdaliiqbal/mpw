@@ -70,6 +70,7 @@
 			entry-point-ref="unauthorizedEntryPoint"			
 			authentication-manager-ref="authenticationManager">
 		<sec:custom-filter ref="authenticationTokenProcessingFilter" position="FORM_LOGIN_FILTER" />
+		<sec:intercept-url method="POST" pattern="/api/v01/users" access="hasRole('anonymous')" />
 		<sec:intercept-url method="POST" pattern="/api/v01/users/**" access="hasRole('mpwuser')" />
 		<sec:intercept-url method="PUT" pattern="/api/v01/users/**" access="hasRole('mpwuser')" />
 		<sec:intercept-url method="GET" pattern="/api/v01/users/**" access="hasRole('mpwuser')" />		
