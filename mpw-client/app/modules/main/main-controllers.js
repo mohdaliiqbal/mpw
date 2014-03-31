@@ -45,6 +45,7 @@ angular.module('mpw-client.main-controllers', ['mpw-client.main-services']).
 
         /*initialize the things required by signup page*/
         $scope.user = {};
+        $rootScope.authToken = undefined;
 
         GeoNameCountryNameService.get(function(countrySuccessResults)
         {
@@ -110,8 +111,8 @@ angular.module('mpw-client.main-controllers', ['mpw-client.main-services']).
     {
         console.log("logout controller initialized");
         $scope.logout = function() {
-            $rootScope.user = null;
-            $rootScope.authToken = null;
+            $rootScope.user = undefined;
+            $rootScope.authToken = undefined;
             $rootScope.loggedIn = false;
             return "#/logout";
         }
